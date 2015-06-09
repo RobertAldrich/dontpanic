@@ -20,11 +20,26 @@ namespace dontpanic.Controllers
             return View();
         }
 
+        public ActionResult foo()
+        {
+            return View("About");
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Serial(string letterCase)
+        {
+            var serial = "ASPNET";
+            if (letterCase == "lower")
+            {
+                return Content(serial.ToLower());
+            }
+            return Content(serial);
         }
     }
 }
