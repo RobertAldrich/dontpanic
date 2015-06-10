@@ -7,9 +7,7 @@ namespace dontpanic.Models
 {
     public class Calculation
     {
-
-        public double firstNumber { get; set; }
-        public double secondNumber { get; set; }
+        public string calcResult { get; set; }
         public string mathOperation { get; set; }
     
     }

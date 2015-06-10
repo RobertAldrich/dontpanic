@@ -35,7 +35,7 @@
            SecondNum = SecondNum.substring(0,epos+1) + SecondNum.substring(epos+2);
        };
 
-       document.Calculator.Display.value = SecondNum;
+       document.Calculator.NumField.value = SecondNum;
      }
 
     function dcml()
@@ -51,14 +51,14 @@
                 SecondNum = SecondNum + ".";
             };
         };
-        document.Calculator.Display.value = SecondNum;
+        document.Calculator.NumField.value = SecondNum;
      }
 
     function Clear()
     {
         FirstNum = "0"
         Operation = "";
-        document.Calculator.Display.value = 0;
+        document.Calculator.NumField.value = 0;
      }
 
     function MathOp(op)
@@ -66,14 +66,18 @@
         Operation = op;
         FirstNum = SecondNum; 
         SecondNum = "";
-        document.Calculator.Display.value = SecondNum;
+        document.Calculator.NumField.value = SecondNum;
      }
 
     function Calc()
      {
         // Not clear on how to get this into the Model class.
         // Hidden text fields?  Seems too 90s.
-        window.alert(FirstNum + Operation + SecondNum);
+        //window.alert(FirstNum + Operation + SecondNum);
+
+       $.get("Calculator/Evaluate", {mathOperation:FirstNum + Operation + SecondNum}, function (data) {
+           $("#NumField").val(data);
+        });
 
      }
 
